@@ -24,5 +24,9 @@
       -u string
         	User/account for the attack. (default "admin")
 
+### Examples:
 
+    $ ./Tupã -hp 10.2.240.1:21 -n 10 -f passwordlist.txt -p ftp
+	...	...	...
+    $ cat wordlist.txt | ./Tupã -hp 10.2.240.1:21 -n 10  -u Administrator -p ftps
 
