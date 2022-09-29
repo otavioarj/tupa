@@ -33,7 +33,7 @@ func Ftpcon(hostp string,user string, pass []string, con net.Conn) {
         }
         defer con.Close()
         msg:= []byte("USER "+ user +"\n")
-        reply := make([]byte, 1024)
+        reply := make([]byte, 256)
         _, err = con.Read(reply)
         checkErr(err)
         if (strings.Contains(string(reply),"FTP")){
