@@ -8,7 +8,7 @@ import (
         "crypto/tls"     
 )
 
-// Example of a stack protocol, where it relies on a TLS tunnel
+// Example of a stacked protocol (i.e, FTP/TLS), where it relies on a TLS tunnel
 func Ftpscon(hostp string,user string, pass []string, con net.Conn) {
         var err error
                
