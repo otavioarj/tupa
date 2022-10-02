@@ -5,11 +5,12 @@ import (
         "fmt"
         "net"     
         "strings" 
-        "crypto/tls"     
+        "crypto/tls"
+        "time"     
 )
 
 // Example of a stacked protocol (i.e, FTP/TLS), where it relies on a TLS tunnel
-func Ftpscon(hostp string,user string, pass []string, con net.Conn) {
+func Ftpscon(hostp string,user string, pass []string, _ []string,con net.Conn) {
         var err error
                
         if (con ==nil){
@@ -18,17 +19,17 @@ func Ftpscon(hostp string,user string, pass []string, con net.Conn) {
                 checkErr(err)                
         }
 // Con will be closed in the inner call. Follow this approach for every protocol that does have clear and TLS tunnels
-        Ftpcon(hostp,user, pass, con)        
+        Ftpcon(hostp,user, pass, nil,con)        
 }
 
    
 
 // Example of a protocol
-func Ftpcon(hostp string,user string, pass []string, con net.Conn) {
+func Ftpcon(hostp string,user string, pass []string, _ []string,con net.Conn) {
         
         var err error
         if (con ==nil){
-                con, err = net.Dial("tcp", hostp)
+                con, err = net.DialTimeout("tcp", hostp,time.Duration(Tout)*time.Second)
                 checkErr(err)                
         }
         defer con.Close()

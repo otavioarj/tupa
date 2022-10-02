@@ -16,7 +16,7 @@ func checkErr(err error) {
     }
 }
 
-func monkey(fu Fu,thrs int,hostp string,user string, pass []string, con net.Conn) {
+func monkey(fu Fu,thrs int,hostp string,user string, pass []string, ext []string,con net.Conn) {
         
         if thrs > len(pass) {thrs=len(pass)}
         intv:= len(pass)/thrs
@@ -41,7 +41,7 @@ func monkey(fu Fu,thrs int,hostp string,user string, pass []string, con net.Conn
                         if (j>0) {init+=1}
                 }                                     
                 //fmt.Printf("init:%d end:%d \n",init,end)                                                                          
-                go fu(hostp,user, pass[init:end], con)   
+                go fu(hostp,user, pass[init:end], ext,con)   
                 init+=intv
         }           
 }

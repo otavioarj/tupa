@@ -5,11 +5,13 @@ import (
         "net"
 )
 
-type Fu func(string,string, []string,net.Conn)
+type Fu func(string,string, []string,[] string,net.Conn)
 
 type FuMap map[string]Fu
 
 var FuProts= FuMap{}
+
+var Tout int
 
 func ProtoAdd(FuMap){
 }
