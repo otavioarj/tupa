@@ -18,11 +18,16 @@ func Start() {
         
         flag.Parse()
         var in *os.File
-        var err error
-        FunkProtocol = FuMap{ "ftp": Ftpcon}
-        
+        var err error   
+        initProts()       
         checkErr(chkFu(*pfunk))
-        funk:=FunkProtocol[*pfunk]
+        funk:=FuProts[*pfunk]
+        fmt.Print("[*] Loaded protocols: ")
+        for k, _ := range FuProts {
+                fmt.Print(k+" ")
+        }
+        fmt.Print("\n")   
+        
         tlsVerify= *tlsvr         
         pass:= make([]string,*buff)
         cnt:=0 

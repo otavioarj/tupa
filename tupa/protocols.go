@@ -9,14 +9,19 @@ type Fu func(string,string, []string,net.Conn)
 
 type FuMap map[string]Fu
 
-var FunkProtocol = FuMap{}
+var FuProts= FuMap{}
 
 func ProtoAdd(FuMap){
 }
 
 var tlsVerify bool
 
+
+func initProts(){
+        FuProts["ftp"]= Ftpcon
+//        FuProts["ftps"]= Ftpscon // commented as it's used as example in main.go
+}
 func chkFu (f string) (error) {
-        if (FunkProtocol[f] == nil){ return errors.New("[-] Unknown protocol name: "+f)}
+        if (FuProts[f] == nil){ return errors.New("[-] Unknown protocol name: "+f)}
         return nil                    
 }
