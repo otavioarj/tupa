@@ -1,3 +1,4 @@
+
 # Tupã
 
  **Golang manager for bruteforce/password spray protocols attack**
@@ -21,8 +22,12 @@
       -p string
         	Protocol/Service to brute (default "ftp")
       -t	Skip TLS TrustChain verification (default true)
-      -u string
+      -to int
+		    TCP timeout (default 3)
+    -u string
         	User/account for the attack. (default "admin")
+    -xt
+            Make all tail strings as extra value to protocol parser
 
 ### Examples:
 
